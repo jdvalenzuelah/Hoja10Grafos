@@ -1,5 +1,11 @@
-#--------
-#--------
+#******************************************************
+#Universidad del Valle de Guatemala
+#Algoritmos y Estructura de Datos
+#David Valenzuela 171001
+#Marcos Gutierrez 17
+#Fernando Hengstenberg 17699
+#Base de Datos y Grafos
+#******************************************************
 
 #Import Graph Database
 from neo4jrestclient.client import GraphDatabase
