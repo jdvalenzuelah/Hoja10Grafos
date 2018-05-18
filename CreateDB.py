@@ -15,13 +15,8 @@ from neo4jrestclient import client
 db = GraphDatabase("http://localhost:7474", username="neo4j", password="123456")
 
 #Creamos los "labels" (Tipo de dato)
-<<<<<<< HEAD
 pacientes = db.labels.create("Patient")
 doctores = db.labels.create("Doctors")
-=======
-pacientes = db.labels.create("Pacientes")
-doctores = db.labels.create("Doctores")
->>>>>>> 8eca3a90138e425f481d7737ff1ad3b148166c50
 drogas = db.labels.create("Drugs")
 
 #Funcion para agregar el paciente
@@ -46,44 +41,9 @@ def prescribe(doctor, paciente, nombreMedicina, desdeFecha, hastaFecha, dosisP):
 	doctor.relationships.create("Prescibes", medicina)
 	paciente.relationships.create("Takes", medicina)
 
-#Funcion para definir una visita de un paciente a un doctor
+#FUncion para definir una visita de un paciente a un doctor
 def visita(doctor, paciente):
 	paciente.relationships.create("Visits", doctor)
-
-	#Imprimimos los pacientes disponibles en la base de datos
-	print("Estos son los pacientes disponibles, dentro de la sala\n")
-	q = 'MATCH (u: Pacientes) RETURN u'
-	resultados = db.query(q, returns=(client.Node, str, client.Node)) 
-	#ciclo para recorrer la busqueda
-	 nombrePaciente = raw_input("Ingrese el nombre del Paciente que desea relacionar: ")
-    print("Estos son los doctores disponibles dentro de la sala: ")
-    q = 'MATCH (u: Doctores) RETURN u'
-    results = db.query(q, returns=(client.Node, str, client.Node))
-    for r in results:
-        print(" - " + "%s" % (r[0]["name"]))
-    nombreDoctor = raw_input("Ingrese el nombre del Doctor que desea relacionar: ")
-    q = 'MATCH (u: Doctores) WHERE u.name="'+nombreDoctor+'" RETURN u'
-    resultado_uno = db.query(q, returns=(client.Node))
-    largo_uno = len(resultado_uno)
-    q = 'MATCH (u: Pacientes) WHERE u.name="'+nombrePaciente+'" RETURN u'
-    resultado_dos = db.query(q, returns=(client.Node))
-    largo_dos = len(resultado_dos)
-    if(largo_uno>0 and largo_dos>0):
-        date = raw_input("Ingrese la Fecha de Vista(YYYYMMDD): ")
-        medicia = raw_input("Ingrese la medicina: ")
-        dateStart = raw_input("Ingrese la fecha de inicio del tratamiento (YYYYMMDD): ")
-        dateFinish = raw_input("Ingrese la fecha de finalizacion del tratamiento (YYYYMMDD): ")
-        dosisM = raw_input("Ingrese la dosis que el paciente debe de tomar: ")
-        nuevaMedicina = db.nodes.create(name=medicina,desdeFecha=dateStart,hastaFecha=dateFinish,dosis=dosisM)
-        Drogas.add(nuevaMedicina)
-        for r in resultado_uno:
-            for i in resultado_dos:
-                i[0].relationships.create("VISITS",r[0],fecha=date) #el paciente visita al doctor en tal fecha
-                i[0].relationships.create("TAKE",nuevaMedicina) #el paciente toma la medicina
-                r[0].relationships.create("PRESCRIBE",nuevaMedicina) #el doctor prescribe la medicina 
-        print("Se ha ingresado con exito la relacion\n")
-    else:
-        print("Algunos de los datos ingresados no estan dentro de la base de datos del Hospital\n Porfavor intentelo de nuevo")
 
 #Funciona ara agregar una persona conocida
 def conoce(persona1, persona2):
