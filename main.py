@@ -25,6 +25,18 @@ while menu != "salir" or menu != "5":
         menu = input("")
 
     if menu == "1" or menu == "ingresar nuevo doctor":
-        import createDB 
+        print ("ingrese un doctor")
+    
+    if menu == "2" or menu == "ingresar nuevo paciente":
+        print ("ingrese un nuevo paciente")
+
+    if menu == "3" or menu == "doctores con tipos de especialidades":
+        print ("doctores con tipos de especialidades")
+
+    if menu == "4" or menu == "una persona conoce a otra":
+        print ("una persona conoce a otra")
+
+
+     
     
 
