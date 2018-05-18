@@ -14,7 +14,7 @@ from neo4jrestclient.client import GraphDatabase
 db = GraphDatabase("http://localhost:7474", username="neo4j", password="123456")
 
 #Creamos los "labels" (Tipo de dato)
-pacientes = db.labels.create("Patient")
+pacientes = db.labels.create("Pacientes")
 doctores = db.labels.create("Doctores")
 drogas = db.labels.create("Drugs")
 
@@ -44,6 +44,13 @@ def prescribe(doctor, paciente, nombreMedicina, desdeFecha, hastaFecha, dosisP):
 def visita(doctor, paciente):
 	paciente.relationships.create("Visits", doctor)
 
+	#Imprimimos los pacientes disponibles en la base de datos
+	print("Estos son los pacientes disponibles, dentro de la sala\n")
+	q = 'MATCH (u: Pacientes) RETURN u'
+	resultados = db.query(q, returns=(client.Node, str, client.Node)) 
+	#ciclo para recorrer la busqueda
+	for r in resultados:
+		print ("-")
 #Funciona ara agregar una persona conocida
 def conoce(persona1, persona2):
 	persona1.relationships.create("Knows", persona2)
