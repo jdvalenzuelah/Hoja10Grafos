@@ -7,7 +7,6 @@
 #Base de Datos y Grafos
 #******************************************************
 
-
 print ("************************menu************************")
 print ("1. ingresar nuevo Doctor")
 print ("2. ingresar nuevo Paciente")
@@ -23,9 +22,11 @@ while menu != "salir" or menu != "5":
     if menu != "1" and menu != "2" and menu != "3" and menu != "4" and menu != "5":
         print ("intente de nuevo")
         menu = input("")
+        
 
     if menu == "1" or menu == "ingresar nuevo doctor":
         print ("ingrese un doctor")
+        
     
     if menu == "2" or menu == "ingresar nuevo paciente":
         print ("ingrese un nuevo paciente")
