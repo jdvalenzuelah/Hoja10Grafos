@@ -23,5 +23,8 @@ while menu != "salir" or menu != "5":
     if menu != "1" and menu != "2" and menu != "3" and menu != "4" and menu != "5":
         print ("intente de nuevo")
         menu = input("")
+
+    if menu == "1" or menu == "ingresar nuevo doctor":
+        import createDB 
     
 
