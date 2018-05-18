@@ -71,17 +71,22 @@ def buscarDoctor(especialidad):
 	cypher = 'MATCH (n: Doctors) WHERE n.esp="' + especialidad +'" RETURN n'
 	query = db.query(cypher, returns=(client.Node, str, client.Node))
 	results = []
-	for result in query:
-		results.append("Nombre: %s Telefono: %s" % (result[0]["name"], result[0]["phone"]))
-	return results
+	return query
 
-#Creacion de grafos de pruebas
-doc = agregarDoctor("Marcos", "545454", "Internista", "24353026")
-pac = agregarPaciente("Fernando", "35202766")
-pac2 = agregarPaciente("David", "5454545")
-prescribe(doc, pac, "Aspririna", "17/05/2018", "25/05/2018", "cada 8h")
-visita(doc, pac)
-conoce(pac, pac2)
-for i in buscarDoctor("Internista"):
-	print(i)
+#Funcion para imprimir una lista de doctores
+def imprimirDoctor(query):
+	for result in query:
+		print("Nombre: %s Telefono: %s" % (result[0]["name"], result[0]["phone"]))
+		
+
+#Funcion para buscar una persona
+def buscarPersona(nombre):
+	cypher = 'MATCH (n: Patient) WHERE n.name="' + nombre + '" RETURN n'
+	query = db.query(cypher, returns=(client.Node, str, client.Node))
+	return query
+
+#Imprimir una lista de personas
+def imprimirPersona(query):
+	for r in query:
+		print("Nombre: %s Telefono: %S" % (r[0]["name"], r[0]["phone"]))
 

@@ -12,8 +12,8 @@ from CreateDB import *
 opcion = 0
 
 print("Bienvenido al sistema de control del Hospital")
-print("¿Que desea hacer?\n 1. Ingresar nuevo doctor\n 2. Ingresar nuevo paciente\n 3. Doctores con Especialidades\n 4.Una Persona Conoce a Otra\n 5. Recomendaciones de un Paciente\n 6.Recomendaciones de un doctor \n 7. Salir")
-opcion = int(input("¿Cual es opcion a escoger?"))
+print("Que desea hacer?\n 1. Ingresar nuevo doctor\n 2. Ingresar nuevo paciente\n 3. Doctores con Especialidades\n 4.Una Persona Conoce a Otra\n 5. Recomendaciones de un Paciente\n 6.Recomendaciones de un doctor \n 7. Salir")
+opcion = int(input("Cual es opcion a escoger?"))
 
 #Ciclo para realizar el menu
 while opcion !=5:
@@ -41,12 +41,13 @@ while opcion !=5:
         getEspecialidades()
 
     #Opcion para si una persona conoce a otra persona
-    if(opcion == 4):
+   # if(opcion == 4):
         #Llamaos a la funcion
         
 
     #Opcion para recomendaciones de un paciente
-    if(opcion == 5):
+   # if(opcion == 5):
+        #LLamamos a la funcion
 
      
     
