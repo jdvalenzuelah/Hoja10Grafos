@@ -5,7 +5,7 @@
 #Marcos Gutierrez 17
 #Fernando Hengstenberg 17699
 #Base de Datos y Grafos
-#******************************************************
+#******************************************************	
 
 #Import Graph Database
 from neo4jrestclient.client import GraphDatabase
@@ -40,7 +40,7 @@ def prescribe(doctor, paciente, nombreMedicina, desdeFecha, hastaFecha, dosisP):
 	doctor.relationships.create("Prescibes", medicina)
 	paciente.relationships.create("Takes", medicina)
 
-#FUncion para definir una visita de un paciente a un doctor
+#Funcion para definir una visita de un paciente a un doctor
 def visita(doctor, paciente):
 	paciente.relationships.create("Visits", doctor)
 
